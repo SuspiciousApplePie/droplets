@@ -4,6 +4,11 @@ import {
   createLoadingSpinner,
   renderLoadingSpinner,
   removeLoading,
+  WeatherCard,
+  getWeatherWrapper,
+  clearContent,
+  changeHeaderText,
+  getHeader,
 } from "./ui";
 
 let currentWeatherData;
@@ -24,6 +29,10 @@ export function setUpSumbitListener() {
 
     new Promise((resolve) => {
       const loading = createLoadingSpinner(input.value);
+      const wrapper = getWeatherWrapper();
+      clearContent(wrapper);
+      const head = getHeader();
+      clearContent(head);
       renderLoadingSpinner(loading);
       resolve();
     })
@@ -32,12 +41,23 @@ export function setUpSumbitListener() {
       })
       .then((weatherData) => {
         currentWeatherData = weatherData;
-        console.log(currentWeatherData);
+        currentWeatherData.forEach((item) => {
+          const component = new WeatherCard(
+            item.temp,
+            item.datetime,
+            item.icon,
+            item.description,
+          );
+          const card = component.createWeatherCard();
+          component.renderWeatherCard(card);
+        });
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
+        const head = getHeader();
+        changeHeaderText(head, input.value);
         removeLoading();
       });
   });
