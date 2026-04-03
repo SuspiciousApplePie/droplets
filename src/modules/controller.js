@@ -1,4 +1,12 @@
 import { searchBar } from "./constant";
+import { fetchWeatherData } from "./weather";
+import {
+  createLoadingSpinner,
+  renderLoadingSpinner,
+  removeLoading,
+} from "./ui";
+
+let currentWeatherData;
 /* Submit listener */
 
 export function setUpSumbitListener() {
@@ -13,7 +21,25 @@ export function setUpSumbitListener() {
       validateSearchInput(input);
       return;
     }
-    console.log("input");
+
+    new Promise((resolve) => {
+      const loading = createLoadingSpinner(input.value);
+      renderLoadingSpinner(loading);
+      resolve();
+    })
+      .then(() => {
+        return fetchWeatherData(input.value);
+      })
+      .then((weatherData) => {
+        currentWeatherData = weatherData;
+        console.log(currentWeatherData);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        removeLoading();
+      });
   });
 }
 
