@@ -9,6 +9,7 @@ import {
 } from "./constant.js";
 import { format, parseISO, isToday, isTomorrow } from "date-fns";
 import * as weatherIcons from "./icons.js";
+import "../styles/style.css";
 
 /* Loading spinners */
 export function createLoadingSpinner(place) {
@@ -92,12 +93,14 @@ export function changeHeaderText(head, place) {
 /* Weather UI components */
 
 export class WeatherCard {
-  constructor(temp, date, icon, description, symbol) {
+  constructor(temp, date, icon, description, symbol, feelsLike, humidity) {
     this.temp = temp;
     this.date = date;
     this.icon = icon;
     this.description = description;
     this.symbol = symbol;
+    this.feelsLike = feelsLike;
+    this.humidity = humidity;
   }
 
   renderWeatherCard(card) {
@@ -116,6 +119,8 @@ export class WeatherCard {
     card.appendChild(this.#createImage());
     card.appendChild(this.#createTemp());
     card.appendChild(this.#createDescription());
+    card.appendChild(this.#createFeelsLike());
+    card.appendChild(this.#createHumidity());
     card.appendChild(this.#createDate());
     return card;
   }
@@ -139,6 +144,20 @@ export class WeatherCard {
     desc.className = weatherCard.DESCRIPTION_CLASS;
     desc.textContent = this.description;
     return desc;
+  }
+
+  #createFeelsLike() {
+    const feelsLike = document.createElement("p");
+    feelsLike.className = weatherCard.FEELS_LIKE_CLASS;
+    feelsLike.textContent = `Feels like: ${this.feelsLike}${this.symbol}`;
+    return feelsLike;
+  }
+
+  #createHumidity() {
+    const humidity = document.createElement("p");
+    humidity.className = weatherCard.HUMIDITY_CLASS;
+    humidity.textContent = `Humidity: ${this.humidity}${this.symbol}`;
+    return humidity;
   }
 
   #createDate() {
@@ -219,13 +238,15 @@ export function renderButton(buttons) {
 
 export function showInFahrenheit(currentWeatherData) {
   if (!currentWeatherData) return null;
-  currentWeatherData.forEach((item) => {
+  currentWeatherData.days.forEach((item) => {
     const component = new WeatherCard(
       item.temp,
       item.datetime,
       item.icon,
       item.description,
       toggleButton.FARENHEIT.text,
+      item.feelslike,
+      item.humidity,
     );
     const card = component.createWeatherCard();
     component.renderWeatherCard(card);
@@ -234,16 +255,23 @@ export function showInFahrenheit(currentWeatherData) {
 
 export function showInCelsius(currentWeatherData) {
   if (!currentWeatherData) return null;
-  const celsiusWeatherData = currentWeatherData.map((item) =>
-    formatNumber(Number(((item.temp - 32) * 5) / 9)),
-  );
-  currentWeatherData.forEach((item, index) => {
+  const celsiusWeatherData = currentWeatherData.days.map((item) => {
+    return {
+      ...item,
+      temp: formatNumber(item.temp),
+      feelslike: formatNumber(item.feelslike),
+      humidity: formatNumber(item.humidity),
+    };
+  });
+  celsiusWeatherData.forEach((item) => {
     const component = new WeatherCard(
-      celsiusWeatherData[index],
+      item.temp,
       item.datetime,
       item.icon,
       item.description,
       toggleButton.CELSIUS.text,
+      item.feelslike,
+      item.humidity,
     );
     const card = component.createWeatherCard();
     component.renderWeatherCard(card);
@@ -251,6 +279,7 @@ export function showInCelsius(currentWeatherData) {
 }
 
 function formatNumber(num) {
-  if (num % 1 === 0) return num.toString();
-  return Number(num.toFixed(1));
+  const calculatedNum = Number(((num - 32) * 5) / 9);
+  if (calculatedNum % 1 === 0) calculatedNum.toString();
+  return Number(calculatedNum.toFixed(1));
 }

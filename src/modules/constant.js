@@ -26,6 +26,8 @@ export const weatherCard = {
   DATE_CLASS: "date",
   ICON_CLASS: "icon",
   CARD_CLASS: "weather-card",
+  FEELS_LIKE_CLASS: "feels-like",
+  HUMIDITY_CLASS: "humidity",
 };
 
 export const icons = {
