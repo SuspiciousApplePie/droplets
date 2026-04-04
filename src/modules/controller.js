@@ -49,7 +49,7 @@ export function setUpSumbitListener() {
       })
       .finally(() => {
         const head = getHeader();
-        changeHeaderText(head, input.value);
+        changeHeaderText(head, currentWeatherData.resolvedAddress);
         removeLoading();
       });
   });
