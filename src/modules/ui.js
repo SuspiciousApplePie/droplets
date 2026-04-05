@@ -214,7 +214,7 @@ export class WeatherCard {
   }
 
   #createPrecipChance() {
-    const precipProb = document.createElement("p");
+    const precipProb = document.createElement("div");
     precipProb.className = weatherCard.PRECIP_CLASS;
 
     precipProb.innerHTML = weatherIcons.weatherCardIcons.PRECIP_CHANCE;
