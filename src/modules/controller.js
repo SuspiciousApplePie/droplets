@@ -91,7 +91,7 @@ export function setUpClickListener() {
 
 function validateSearchInput(input) {
   if (input.validity.valueMissing) {
-    changeHeaderText;
+    input.setCustomValidity("Please enter a city.");
   } else {
     input.setCustomValidity("");
   }
