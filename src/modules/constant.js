@@ -37,6 +37,8 @@ export const icons = {
   RAIN: "rain",
   PARTLY_CLOUDY: "partly-cloudy-day",
   SNOW: "snow",
+  WIND: "wind",
+  FOG: "fog",
 };
 
 export const toggleButton = {

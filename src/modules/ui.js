@@ -231,6 +231,8 @@ function checkIcon(icon) {
   else if (icon === icons.RAIN) return weatherIcons.rainy;
   else if (icon === icons.PARTLY_CLOUDY) return weatherIcons.partlyCloudy;
   else if (icon === icons.SNOW) return weatherIcons.snow;
+  else if (icon === icons.WIND) return weatherIcons.wind;
+  else if (icon === icons.FOG) return weatherIcons.fog;
 }
 
 /* Toggle Buttons */
