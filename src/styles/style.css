@@ -201,4 +201,17 @@ svg {
   justify-content: center;
   grid-column: 1 / -1;
 }
+
+.search-bar form {
+  width: 700px;
+  height: 40px;
+}
+
+.search-bar input {
+  width: inherit;
+  height: inherit;
+  box-shadow: 0 4px 10px 1px var(--gray);
+  border-radius: var(--padding-sm);
+  padding: var(--padding-sm);
+  font-size: calc(var(--font-sm) * 1.3);
 }
