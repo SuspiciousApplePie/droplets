@@ -12,6 +12,8 @@ import {
   showInCelsius,
   createErrorMessage,
   renderErrorMessage,
+  showButton,
+  hideButton,
 } from "./ui";
 
 let currentWeatherData;
@@ -31,11 +33,13 @@ export function setUpSumbitListener() {
     }
 
     new Promise((resolve) => {
+      hideButton();
       const loading = createLoadingSpinner(input.value);
       const wrapper = getWeatherWrapper();
       clearContent(wrapper);
       const head = getHeader();
       clearContent(head);
+
       renderLoadingSpinner(loading);
       resolve();
     })
@@ -43,6 +47,7 @@ export function setUpSumbitListener() {
         return fetchWeatherData(input.value);
       })
       .then((weatherData) => {
+        showButton();
         currentWeatherData = weatherData;
         showInCelsius(currentWeatherData);
         const head = getHeader();

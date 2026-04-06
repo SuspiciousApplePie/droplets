@@ -286,6 +286,7 @@ export function createButton() {
   const buttonDetails = [toggleButton.CELSIUS, toggleButton.FARENHEIT];
   const div = document.createElement("div");
   div.className = toggleButton.CLASS_NAME;
+  div.classList.add(toggleButton.HIDE);
   buttonDetails.forEach((item) => {
     const button = document.createElement("button");
     button.textContent = item.text;
@@ -296,6 +297,27 @@ export function createButton() {
   return div;
 }
 
+export function showButton() {
+  try {
+    const buttons = document.querySelector(
+      `.${toggleButton.CLASS_NAME}.${toggleButton.HIDE}`,
+    );
+    if (!buttons) throw new Error("Element not found");
+    buttons.classList.remove(toggleButton.HIDE);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function hideButton() {
+  try {
+    const buttons = document.querySelector(`.${toggleButton.CLASS_NAME}`);
+    if (!buttons) throw new Error("Element not found");
+    buttons.classList.add(toggleButton.HIDE);
+  } catch (error) {
+    console.error(error);
+  }
+}
 export function renderButton(buttons) {
   const main = document.querySelector(".main");
   main.appendChild(buttons);

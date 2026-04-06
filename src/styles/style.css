@@ -215,3 +215,7 @@ svg {
   padding: var(--padding-sm);
   font-size: calc(var(--font-sm) * 1.3);
 }
+
+.temp-icon.none {
+  display: none;
+}
