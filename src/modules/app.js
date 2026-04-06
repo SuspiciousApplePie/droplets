@@ -20,10 +20,10 @@ export function init() {
   removeLoading();
   const searchElement = createSearchBar();
   renderSearchBar(searchElement);
-  const buttons = createButton();
-  renderButton(buttons);
   const head = createWeatherCardHeader();
   renderHeader(head);
+  const buttons = createButton();
+  renderButton(buttons);
   const wrapper = createWrapper();
   renderWrapper(wrapper);
   setUpClickListener();
