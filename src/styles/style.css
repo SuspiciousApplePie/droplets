@@ -198,6 +198,8 @@ svg {
   padding: var(--padding-md);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 80px repeat(3, 1fr);
+  height: clamp(600px, 100vh, 1920px);
 }
 
 /* Search bar */
@@ -255,5 +257,11 @@ svg {
   border: 1px solid var(--dark);
 }
 
+.weather-wrapper {
+  grid-column: 1 / -1;
+}
+
+.temp-icon.none,
+.location.none {
   display: none;
 }
