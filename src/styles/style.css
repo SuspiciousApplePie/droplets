@@ -270,10 +270,86 @@
 .icon svg {
   height: var(--weather-icons);
   width: var(--weather-icons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .temp-icon.none,
 .location.none,
 .weather-wrapper.none {
   display: none;
+}
+
+.weather-card {
+  display: grid;
+  border: 1px solid var(--seconday-color);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 3fr 2fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "weather-icon temperature"
+    "description description"
+    "feels-like humidity"
+    "precip wind"
+    "date date";
+  padding: var(--padding-sm);
+  color: var(--seconday-color);
+  font-size: calc(var(--font-sm) * 1.2);
+}
+
+.weather-card .icon {
+  grid-area: weather-icon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid var(--seconday-color);
+}
+
+.weather-card .temp {
+  grid-area: temperature;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-md);
+}
+
+.weather-card .description {
+  grid-area: description;
+  display: flex;
+  align-items: center;
+}
+
+.weather-card .feels-like {
+  grid-area: feels-like;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-card .humidity {
+  grid-area: humidity;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-card .precip-chance {
+  grid-area: precip;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-card .windspeed {
+  grid-area: wind;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-card .date {
+  grid-area: date;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
