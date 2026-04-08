@@ -1,6 +1,6 @@
 :root {
   --logo-icon-size: 48px;
-  --weather-icons: 124px;
+  --weather-icons: 125px;
   --measurement-icons: 24px;
   --main-color: #7cc6fe;
   --seconday-color: #f1f2f3;
@@ -8,10 +8,13 @@
   --dark: #333;
   --green: #7cea9c;
   --brown: #772f1a;
+  --orange: #ff8a5b;
+  --blue: #12355b;
   --padding-sm: 8px;
   --padding-md: calc(var(--padding-sm) * 2);
   --font-sm: 12px;
   --font-md: calc(var(--font-sm) * 2);
+  --font-lg: calc(var(--font-sm) * 3);
 }
 
 *,
@@ -31,19 +34,11 @@
 .clear-day-icon .cls-4 {
   fill: none;
   stroke: #000;
-  stroke-miterlimit: 10;
 }
 
-.clear-day-icon .cls-2,
-.clear-day-icon .cls-4 {
-  stroke-width: 5px;
-}
 .clear-day-icon .cls-3,
 .clear-day-icon .cls-4 {
   stroke-linecap: round;
-}
-.clear-day-icon .cls-3 {
-  stroke-width: 4px;
 }
 
 /* Cloudy Day */
@@ -58,8 +53,6 @@
 .cloudy-icon .cls-4 {
   fill: none;
   stroke: #000;
-  stroke-miterlimit: 10;
-  stroke-width: 4px;
 }
 .cloudy-icon .cls-4 {
   stroke-linecap: round;
@@ -77,7 +70,6 @@
   fill: none;
   stroke: #000;
   stroke-miterlimit: 10;
-  stroke-width: 4px;
 }
 .rainy-icon .cls-4 {
   stroke-linecap: round;
@@ -97,8 +89,6 @@
 .partly-cloudy-icon .cls-4 {
   fill: none;
   stroke: #000;
-  stroke-miterlimit: 10;
-  stroke-width: 4px;
 }
 /* Snow */
 .snow-icon .cls-1 {
@@ -112,7 +102,6 @@
 .snow-icon .cls-5,
 .snow-icon .cls-6 {
   fill: none;
-  stroke-miterlimit: 10;
 }
 .snow-icon .cls-3,
 .snow-icon .cls-6 {
@@ -125,16 +114,11 @@
 .snow-icon .cls-5 {
   stroke-linecap: round;
 }
-.snow-icon .cls-6 {
-  stroke-width: 4px;
-}
 /* Fog */
 .fog-icon .st0 {
   fill: none;
   stroke: #221f1f;
-  stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-miterlimit: 10;
 }
 /* Wind */
 .wind-icon .cls-1 {
@@ -147,14 +131,10 @@
 .wind-icon .cls-4 {
   fill: none;
   stroke: #000;
-  stroke-miterlimit: 10;
 }
-.wind-icon .cls-3 {
-  stroke-width: 4px;
-}
+
 .wind-icon .cls-4 {
   stroke-linecap: round;
-  stroke-width: 3px;
 }
 
 /*Feels like*/
@@ -162,13 +142,22 @@
 .feels-like-icon .cls-1 {
   fill: none;
 }
+
+.feels-like-icon path {
+  fill: var(--brown);
+}
+
+/*Humidity*/
+.humidity-icon path {
+  fill: var(--orange);
+}
 /* Wind speed */
 .wind-speed-icon path {
-  fill: #aac7d5;
+  fill: var(--green);
 }
 /*Precip chance*/
 .precip-chance-icon path {
-  fill: #aac7d5;
+  fill: var(--blue);
 }
 /* Container */
 .container {
@@ -228,6 +217,7 @@
   padding: var(--padding-md);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  color: var(--seconday-color);
 }
 
 .temp-icon {
@@ -248,7 +238,7 @@
 }
 
 .temp-icon button:hover {
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--dark);
   border-color: var(--dark);
   border: 1px solid var(--dark);
