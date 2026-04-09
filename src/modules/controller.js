@@ -18,6 +18,8 @@ import {
   hideButton,
   showElement,
   hideElement,
+  disableSearchBar,
+  enableSearchBar,
 } from "./ui";
 
 let currentWeatherData;
@@ -26,11 +28,10 @@ let currentWeatherData;
 export function setUpSumbitListener() {
   const searchElement = document.querySelector(`.${searchBar.CLASS_NAME}`);
   if (!searchElement) throw new Error("Element not found");
-
   searchElement.addEventListener("submit", (event) => {
     event.preventDefault();
-
     const input = event.target.querySelector(`#${searchBar.INPUT_ID}`);
+    disableSearchBar(input);
     if (!input.validity.valid) {
       validateSearchInput(input);
       return;
@@ -72,6 +73,7 @@ export function setUpSumbitListener() {
       })
       .finally(() => {
         removeLoading();
+        enableSearchBar(input);
       });
   });
 }

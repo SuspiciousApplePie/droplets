@@ -60,6 +60,14 @@ export function renderSearchBar(searchElement) {
   const main = document.querySelector(".main");
   main.appendChild(searchElement);
 }
+
+export function disableSearchBar(input) {
+  input.disabled = true;
+}
+
+export function enableSearchBar(input) {
+  input.disabled = false;
+}
 /* Header */
 
 export function createWeatherCardHeader() {
