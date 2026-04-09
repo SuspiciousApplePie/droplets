@@ -98,13 +98,14 @@ export function setUpInputListener() {
 export function setUpClickListener() {
   const main = document.querySelector(".main");
   main.addEventListener("click", (event) => {
-    removeButtonHiglight();
     if (event.target.id === toggleButton.CELSIUS.id) {
+      removeButtonHiglight();
       higlightCelsiusButton();
       const wrapper = getWeatherWrapper();
       clearContent(wrapper);
       showInCelsius(currentWeatherData);
     } else if (event.target.id === toggleButton.FARENHEIT.id) {
+      removeButtonHiglight();
       const wrapper = getWeatherWrapper();
       higlightFahrenheitButton();
       clearContent(wrapper);
