@@ -2,14 +2,14 @@
   --logo-icon-size: 48px;
   --weather-icons: 125px;
   --measurement-icons: 24px;
-  --main-color: #7cc6fe;
+  --main-color: #12355b;
   --seconday-color: #f1f2f3;
   --gray: #6a7b76;
   --dark: #333;
   --green: #7cea9c;
   --brown: #772f1a;
   --orange: #ff8a5b;
-  --blue: #12355b;
+  --blue: #7cc6fe;
   --padding-sm: 8px;
   --padding-md: calc(var(--padding-sm) * 2);
   --font-sm: 12px;
