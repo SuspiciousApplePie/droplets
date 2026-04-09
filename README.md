@@ -36,3 +36,7 @@ A weather application that displays current weather conditions for any city usin
    `npm install`
 3. Run the development server
    `npm run start`
+
+## Screenshots
+
+![Weather App Screenshot - Desktop](./src/img/droplets-ui.png)
