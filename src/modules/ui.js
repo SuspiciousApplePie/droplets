@@ -291,7 +291,7 @@ function convertDate(date) {
   if (isToday(date)) {
     return format(date, "'Today', MMM dd");
   } else if (isTomorrow(date)) {
-    return format(date, "'Tommorow', MMM dd");
+    return format(date, "'Tomorrow', MMM dd");
   } else {
     return format(date, "EEEE, MMM dd");
   }
