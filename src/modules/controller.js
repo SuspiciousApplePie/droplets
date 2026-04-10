@@ -40,8 +40,6 @@ export function setUpSumbitListener() {
       validateSearchInput(input);
       return;
     }
-
-    new Promise((resolve) => {
       hideButton();
       const error = getErrorMessage();
       deleteElement(error);
@@ -53,11 +51,7 @@ export function setUpSumbitListener() {
       clearContent(wrapper);
       clearContent(head);
       renderLoadingSpinner(loading);
-      resolve();
-    })
-      .then(() => {
-        return fetchWeatherData(input.value);
-      })
+    fetchWeatherData(input.value)
       .then((weatherData) => {
         showButton();
         higlightCelsiusButton();
