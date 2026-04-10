@@ -228,7 +228,7 @@ export class WeatherCard {
     humidity.innerHTML = weatherIcons.weatherCardIcons.HUMIDITY;
 
     const span = document.createElement("span");
-    span.textContent = `${this.humidity} ${this.symbol}`;
+    span.textContent = `${this.humidity} %`;
 
     humidity.appendChild(span);
     return humidity;
@@ -384,7 +384,7 @@ export function removeButtonHiglight() {
     const buttons = document.querySelectorAll(
       `.${toggleButton.CLASS_NAME} > button`,
     );
-    if (!buttons) throw new Error("Element not found");
+    if (!buttons.length) throw new Error("Element not found");
     buttons.forEach((button) => {
       button.classList.remove(toggleButton.ACTIVE);
     });
@@ -420,7 +420,6 @@ export function showInCelsius(currentWeatherData) {
       ...item,
       temp: formatNumberToCelcius(item.temp),
       feelslike: formatNumberToCelcius(item.feelslike),
-      humidity: formatNumberToCelcius(item.humidity),
       windspeed: formatWindSpeedToKilometers(item.windspeed),
     };
   });

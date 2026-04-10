@@ -40,17 +40,17 @@ export function setUpSumbitListener() {
       validateSearchInput(input);
       return;
     }
-      hideButton();
-      const error = getErrorMessage();
-      deleteElement(error);
-      const head = getHeader();
-      hideElement(head);
-      const loading = createLoadingSpinner(input.value);
-      const wrapper = getWeatherWrapper();
-      hideElement(wrapper);
-      clearContent(wrapper);
-      clearContent(head);
-      renderLoadingSpinner(loading);
+    hideButton();
+    const error = getErrorMessage();
+    deleteElement(error);
+    const head = getHeader();
+    hideElement(head);
+    const loading = createLoadingSpinner(input.value);
+    const wrapper = getWeatherWrapper();
+    hideElement(wrapper);
+    clearContent(wrapper);
+    clearContent(head);
+    renderLoadingSpinner(loading);
     fetchWeatherData(input.value)
       .then((weatherData) => {
         showButton();
