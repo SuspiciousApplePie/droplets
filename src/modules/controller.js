@@ -54,6 +54,7 @@ export function setUpSumbitListener() {
     fetchWeatherData(input.value)
       .then((weatherData) => {
         showButton();
+        removeButtonHiglight();
         higlightCelsiusButton();
         currentWeatherData = weatherData;
         showInCelsius(currentWeatherData);
