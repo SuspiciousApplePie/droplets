@@ -117,7 +117,7 @@ export function createErrorMessage() {
 
 export function renderErrorMessage(errorMessage) {
   const weatherWrap = document.querySelector(`.main`);
-  if (!weatherCard) throw new Error("Element does not exist");
+  if (!weatherWrap) throw new Error("Element does not exist");
   weatherWrap.appendChild(errorMessage);
 }
 
